@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next mist" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.png?v=5.1.3">
+
+
+
+
+
+
+  <meta name="keywords" content="angular,javascript,tech," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="本文使用的AngularJS是基于1.x版本的。 使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息 现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下">
+<meta name="keywords" content="angular,javascript,tech">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AngularJS 动态加载的思考">
+<meta property="og:url" content="http://www.caiyunlin.com/2016/angularjs-dynamic-loading/index.html">
+<meta property="og:site_name" content="蔡云林的博客">
+<meta property="og:description" content="本文使用的AngularJS是基于1.x版本的。 使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息 现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-06T08:36:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AngularJS 动态加载的思考">
+<meta name="twitter:description" content="本文使用的AngularJS是基于1.x版本的。 使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息 现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.caiyunlin.com/2016/angularjs-dynamic-loading/"/>
+
+
+
+
+
+  <title>AngularJS 动态加载的思考 | 蔡云林的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">蔡云林的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.caiyunlin.com/2016/angularjs-dynamic-loading/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Calvin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="蔡云林的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">AngularJS 动态加载的思考</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-21T11:37:45+00:00">
+                2016-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术整理/" itemprop="url" rel="index">
+                    <span itemprop="name">技术整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文使用的AngularJS是基于1.x版本的。</p>
+<p>使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息</p>
+<h2 id="现状"><a href="#现状" class="headerlink" title="现状"></a>现状</h2><p>项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>)</div><div class="line">.config(<span class="function"><span class="keyword">function</span> (<span class="params">$stateProvider, $urlRouterProvider</span>) </span>&#123;</div><div class="line">    $urlRouterProvider.otherwise(<span class="string">"/login"</span>);</div><div class="line">    $stateProvider</div><div class="line">        .state(<span class="string">'home'</span>, &#123;</div><div class="line">            url: <span class="string">'/home'</span>,</div><div class="line">            controller: <span class="string">'homeController'</span>,</div><div class="line">            templateUrl: <span class="string">'views/home.html'</span></div><div class="line">        &#125;)</div><div class="line">        .state(<span class="string">'feature1'</span>, &#123;</div><div class="line">            url: <span class="string">'/feature1'</span>,</div><div class="line">            controller: <span class="string">'feature1Controller'</span>,</div><div class="line">            templateUrl: <span class="string">'views/feature1.html'</span></div><div class="line">        &#125;)</div><div class="line">        .state(<span class="string">'feature2'</span>, &#123;</div><div class="line">            url: <span class="string">'/feature2'</span>,</div><div class="line">            controller: <span class="string">'feature2Controller'</span>,</div><div class="line">            templateUrl: <span class="string">'views/feature2.html'</span></div><div class="line">        &#125;)</div><div class="line">    &#125;)</div></pre></td></tr></table></figure>
+<p>如此对 /home, /feature1, /feature2 这样的模块，每次增加一个就要做如下动作</p>
+<ol>
+<li>添加state记录</li>
+<li>state,url,controller,templateurl都按照约定写好，否则不容易直接找到</li>
+<li>index.html 页面里要添加controller的js文件<br>这样下来，当模块达到十几或几十个的时候，首页就是一串JS的文件引入，config里面state也是很多定义，关键是，任何一个地方写错一个字母，功能就直接没用了。</li>
+</ol>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>开始尝试像后台MVC一样，比如#/home, 就动态载入 views/home.html 配合 controllers/home.js，后来发现state不配置还是很难的。</p>
+<p>退而求其次。</p>
+<p>预定义一个数组，然后按自定义规则加载<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> states = [<span class="string">"home"</span>,<span class="string">"about"</span>,<span class="string">"about.company"</span>,<span class="string">"contact"</span>];</div></pre></td></tr></table></figure></p>
+<p>然后根据名称，自动约定加载controller和view信息，关于controller的自动加载，使用了ocLazyLoad模块</p>
+<p>核心代码如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">angular.module(<span class="string">'app'</span>)</div><div class="line">.config(<span class="function"><span class="keyword">function</span> (<span class="params">$stateProvider, $urlRouterProvider</span>) </span>&#123;</div><div class="line">    $urlRouterProvider.otherwise(<span class="string">"/home"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> states = [<span class="string">"home"</span>,<span class="string">"about"</span>,<span class="string">"about.company"</span>,<span class="string">"contact"</span>];</div><div class="line"></div><div class="line">    angular.forEach(states, <span class="function"><span class="keyword">function</span>(<span class="params">state</span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">var</span> controllerName = state.replace(<span class="regexp">/\../g</span>,<span class="function"><span class="keyword">function</span>(<span class="params">m</span>)</span>&#123;</div><div class="line">            <span class="keyword">return</span> m.replace(<span class="string">"."</span>,<span class="string">""</span>).toUpperCase()&#125;</div><div class="line">        );</div><div class="line">        <span class="keyword">var</span> state_parts = state.split(<span class="string">"."</span>);</div><div class="line">        <span class="keyword">var</span> controllerFile = state_parts[<span class="number">0</span>];</div><div class="line">        <span class="keyword">var</span> url = <span class="string">"/"</span>+state_parts[state_parts.length - <span class="number">1</span>];</div><div class="line">        $stateProvider.state(state, &#123;</div><div class="line">            url: url, </div><div class="line">            templateUrl: <span class="string">'views/'</span> + state + <span class="string">'.html'</span>,</div><div class="line">            controller: controllerName + <span class="string">'Controller'</span>,</div><div class="line">            resolve: &#123;</div><div class="line">                deps:[<span class="string">'$ocLazyLoad'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$ocLazyLoad</span>) </span>&#123;</div><div class="line">                    <span class="keyword">return</span> $ocLazyLoad.load ([</div><div class="line">                        &#123;</div><div class="line">                            name: <span class="string">'controllers'</span>,</div><div class="line">                            files: [</div><div class="line">                                <span class="string">'js/controllers/'</span>+controllerFile+<span class="string">'.js'</span></div><div class="line">                            ]</div><div class="line">                        &#125;</div><div class="line">                    ])</div><div class="line">                &#125;]</div><div class="line">            &#125;</div><div class="line">        &#125;) ;</div><div class="line">    &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>使用此方法，还是不能像后端MVC那样自动解析，但是已经可以少些很多重复代码了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/angular/" rel="tag"># angular</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
+          
+            <a href="/tags/tech/" rel="tag"># tech</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/download_novel/" rel="next" title="PowerShell小说爬虫">
+                <i class="fa fa-chevron-left"></i> PowerShell小说爬虫
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/angular-rest/" rel="prev" title="基于REST的接口定义思考">
+                基于REST的接口定义思考 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Calvin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#现状"><span class="nav-number">1.</span> <span class="nav-text">现状</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.</span> <span class="nav-text">解决</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2008 &mdash; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cai, Yun-Lin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
