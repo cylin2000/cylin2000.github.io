@@ -94,18 +94,18 @@
 
 
 
-  <meta name="description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。15">
+  <meta name="description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。17">
 <meta name="keywords" content="javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javascript 对象继承">
 <meta property="og:url" content="http://www.caiyunlin.com/2018/04/28/javascript-inherit/index.html">
 <meta property="og:site_name" content="蔡云林的博客">
-<meta property="og:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。15">
+<meta property="og:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。17">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-07T10:25:12.129Z">
+<meta property="og:updated_time" content="2019-03-07T11:00:56.083Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 对象继承">
-<meta name="twitter:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。15">
+<meta name="twitter:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。17">
 
 
 
@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-07 10:25:12" itemprop="dateModified" datetime="2019-03-07T10:25:12+00:00">2019-03-07</time>
+                <time title="修改时间：2019-03-07 11:00:56" itemprop="dateModified" datetime="2019-03-07T11:00:56+00:00">2019-03-07</time>
               
             
           </span>
@@ -466,7 +466,7 @@
       
 
       
-        <p>Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。15<br><a id="more"></a></p>
+        <p>Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。17<br><a id="more"></a></p>
 <h2 id="定义父类"><a href="#定义父类" class="headerlink" title="定义父类"></a>定义父类</h2><p>将方法写到原型（prototype)上<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.greeting = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hi! I\'m '</span> + <span class="keyword">this</span>.name + <span class="string">'.'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h2 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Teacher</span>(<span class="params">name, age, title</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//初始化父类的属性</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age);</span><br><span class="line">  <span class="comment">//Person.apply(this,[name,age]);</span></span><br><span class="line">  <span class="comment">//初始化子类的属性</span></span><br><span class="line">  <span class="keyword">this</span>.title = title</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//继承父类的方法</span></span><br><span class="line">Teacher.prototype = <span class="built_in">Object</span>.create(Person.prototype);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将构造器指回Teacher，一般情况下可省略，详见 https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor</span></span><br><span class="line">Teacher.prototype.constructor = Teacher;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//设置子类的方法</span></span><br><span class="line">Teacher.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Hi! I\'m '</span> + <span class="keyword">this</span>.name + <span class="string">'. My title is '</span>+<span class="keyword">this</span>.title);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> teacher1 = <span class="keyword">new</span> Teacher(<span class="string">'Allen'</span>,<span class="number">35</span>,<span class="string">'title1'</span>)</span><br><span class="line">teacher1.sayHello();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> teacher2 = <span class="keyword">new</span> Teacher(<span class="string">'Bob'</span>,<span class="number">35</span>,<span class="string">'title1'</span>)</span><br><span class="line">teacher1.greeting();</span><br></pre></td></tr></table></figure>
