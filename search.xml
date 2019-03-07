@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Javascript 对象继承]]></title>
     <url>%2F2018%2F04%2F28%2Fjavascript-inherit%2F</url>
-    <content type="text"><![CDATA[Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。 定义父类将方法写到原型（prototype)上12345678function Person(name, age) &#123; this.name = name; this.age = age;&#125;;Person.prototype.greeting = function() &#123; console.log('Hi! I\'m ' + this.name + '.');&#125;; 定义子类12345678910111213141516171819function Teacher(name, age, title) &#123; //初始化父类的属性 Person.call(this, name, age); //Person.apply(this,[name,age]); //初始化子类的属性 this.title = title&#125;//继承父类的方法Teacher.prototype = Object.create(Person.prototype);//将构造器指回Teacher，一般情况下可省略，详见 https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructorTeacher.prototype.constructor = Teacher;//设置子类的方法Teacher.prototype.sayHello = function()&#123; console.log('Hi! I\'m ' + this.name + '. My title is '+this.title);&#125; 实例化12345var teacher1 = new Teacher('Allen',35,'title1')teacher1.sayHello();var teacher2 = new Teacher('Bob',35,'title1')teacher1.greeting();]]></content>
+    <content type="text"><![CDATA[Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。12 定义父类将方法写到原型（prototype)上12345678function Person(name, age) &#123; this.name = name; this.age = age;&#125;;Person.prototype.greeting = function() &#123; console.log('Hi! I\'m ' + this.name + '.');&#125;; 定义子类12345678910111213141516171819function Teacher(name, age, title) &#123; //初始化父类的属性 Person.call(this, name, age); //Person.apply(this,[name,age]); //初始化子类的属性 this.title = title&#125;//继承父类的方法Teacher.prototype = Object.create(Person.prototype);//将构造器指回Teacher，一般情况下可省略，详见 https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructorTeacher.prototype.constructor = Teacher;//设置子类的方法Teacher.prototype.sayHello = function()&#123; console.log('Hi! I\'m ' + this.name + '. My title is '+this.title);&#125; 实例化12345var teacher1 = new Teacher('Allen',35,'title1')teacher1.sayHello();var teacher2 = new Teacher('Bob',35,'title1')teacher1.greeting();]]></content>
       <categories>
         <category>技术整理</category>
       </categories>
@@ -304,11 +304,6 @@
     <content type="text"><![CDATA[嗨，我是蔡云林，80后程序猿 我最早学习写代码，用的是Basic，写的程序存到软盘，主机是可以插软盘的那种游戏机当代码运行，我用手柄可以控制小精灵的时候，我被这个过程深深的吸引，真是太奇妙了，从此走上了编程的不归路 毕业后我如愿以偿进入软件开发领域，至今有10年+从业经验，目前就职于一家外资企业，专注于.NET企业开发，并对前端开发也有较多涉及平时我喜欢研究编程相关的技术，写些小工具，看书，最近在研究如何写博客，属于后知后觉型的 这是我记录，思考，分享的小站，大部分整理自我的云笔记，在整理的过程中，我会尽量遵循KISS原则 我相信很多东西从根本上来说，应该是简单的，如果没有办法用简单的方式描述出来，那么可能是因为： 没有真正熟悉它 熟悉，却无法很好表达出来 我期望能借助阅读，实践得以窥探一些事物的本质，并通过书写，以尽可能简单的方式表达出来 本站主要包含以下几个方面 软件开发技术整理 读书笔记以及评论 学习方法成长思考 我开发的一些工具 我还维护了一个公众号《菜鸟微开发》，里面开发有一些有趣的小功能，欢迎关注！ 这个公众号只作为开发和测试微信功能，不会做任何图文推送，不会对你造成任何骚扰，请放心关注。 如需与我进一步联系，请发邮件至 cylin2000@163.com]]></content>
   </entry>
   <entry>
-    <title><![CDATA[分类]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
-  </entry>
-  <entry>
     <title></title>
     <url>%2Fnotes%2Findex.html</url>
     <content type="text"><![CDATA[菜鸟笔记你好，这里是蔡云林的开放笔记，简洁版请点击此处: http://www.caiyunlin.com/notes 分类 内容 语言 BAT / PowerShell / PHP / Python / Java / VBA Web HTML / CSS / JavaScript / NodeJs 工具 Chrome / VS Code / Sublime Text / Git 类库/框架 jQuery / Angular 1 / Vue / ReactJs 数据库 SQL / MYSQL 系统 Linux / Ubuntu / Docker 其他 MarkDown]]></content>
@@ -321,6 +316,11 @@
   <entry>
     <title><![CDATA[标签]]></title>
     <url>%2Ftags%2Findex.html</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[分类]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
