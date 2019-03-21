@@ -94,14 +94,19 @@
 
 
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="SparkSpark 简介Apache Spark 是专为==大规模数据处理==而设计的快速通用的==计算引擎==。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不">
+<meta property="og:type" content="website">
 <meta property="og:title" content="SPARK">
 <meta property="og:url" content="http://www.caiyunlin.com/notes/spark/index.html">
 <meta property="og:site_name" content="蔡云林的博客">
+<meta property="og:description" content="SparkSpark 简介Apache Spark 是专为==大规模数据处理==而设计的快速通用的==计算引擎==。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T09:09:05.659Z">
+<meta property="og:image" content="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=ee506abead014c08196e20a33a4b2e30/38dbb6fd5266d0160e50793f932bd40735fa355f.jpg">
+<meta property="og:updated_time" content="2019-03-21T09:26:10.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SPARK">
+<meta name="twitter:description" content="SparkSpark 简介Apache Spark 是专为==大规模数据处理==而设计的快速通用的==计算引擎==。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不">
+<meta name="twitter:image" content="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=ee506abead014c08196e20a33a4b2e30/38dbb6fd5266d0160e50793f932bd40735fa355f.jpg">
 
 
 
@@ -406,7 +411,23 @@
       <div class="post-body">
         
         
-          
+          <h1 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h1><h2 id="Spark-简介"><a href="#Spark-简介" class="headerlink" title="Spark 简介"></a>Spark 简介</h2><p>Apache Spark 是专为==大规模数据处理==而设计的快速通用的==计算引擎==。Spark是UC Berkeley AMP lab (加州大学伯克利分校的AMP实验室)所开源的类Hadoop MapReduce的通用并行框架，Spark，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是——Job中间输出结果可以保存在内存中，从而不再需要读写HDFS，因此Spark能更好地适用于数据挖掘与机器学习等需要迭代的MapReduce的算法。<br>Spark 是一种与 Hadoop 相似的开源集群计算环境，但是两者之间还存在一些不同之处，这些有用的不同之处使 Spark 在某些工作负载方面表现得更加优越，换句话说，Spark 启用了内存分布数据集，除了能够提供交互式查询外，它还可以优化迭代工作负载。</p>
+<p><img src="https://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/wh%3D600%2C800/sign=ee506abead014c08196e20a33a4b2e30/38dbb6fd5266d0160e50793f932bd40735fa355f.jpg" alt="image"></p>
+<h2 id="Spark-特点"><a href="#Spark-特点" class="headerlink" title="Spark 特点"></a>Spark 特点</h2><ul>
+<li>首先，高级 API 剥离了对集群本身的关注，Spark 应用开发者可以专注于应用所要做的计算本身。</li>
+<li>其次，Spark 很快，支持交互式计算和复杂算法。</li>
+<li>最后，Spark 是一个通用引擎，可用它来完成各种各样的运算，包括 SQL 查询、文本处理、机器学习等，而在 Spark 出现之前，我们一般需要学习各种各样的引擎来分别处理这些需求。</li>
+</ul>
+<h2 id="Spark-与-Hadoop-的比较"><a href="#Spark-与-Hadoop-的比较" class="headerlink" title="Spark 与 Hadoop 的比较"></a>Spark 与 Hadoop 的比较</h2><ul>
+<li><p>Spark基于map reduce算法实现的分布式计算，拥有Hadoop MapReduce所具有的优点；但不同于MapReduce的是Job中间输出和结果可以保存在内存中，从而不再需要读写HDFS，因此Spark能更好地适用于数据挖掘与机器学习等需要迭代的map reduce的算法。 </p>
+</li>
+<li><p>Spark更适合于迭代运算比较多的ML和DM运算。因为在Spark里面，有RDD的抽象概念。</p>
+</li>
+<li><p>Spark比Hadoop更通用</p>
+</li>
+<li>Spark提供的数据集操作类型有很多种，不像Hadoop只提供了Map和Reduce两种操作。比如map, filter, flatMap, sample, groupByKey, reduceByKey, union, join, cogroup, mapValues, sort,partionBy等多种操作类型，Spark把这些操作称为Transformations。同时还提供Count, collect, reduce, lookup, save等多种actions操作。</li>
+</ul>
+
         
       </div>
       
@@ -474,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -638,6 +668,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spark"><span class="nav-number">1.</span> <span class="nav-text">Spark</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-简介"><span class="nav-number">1.1.</span> <span class="nav-text">Spark 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-特点"><span class="nav-number">1.2.</span> <span class="nav-text">Spark 特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-与-Hadoop-的比较"><span class="nav-number">1.3.</span> <span class="nav-text">Spark 与 Hadoop 的比较</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
