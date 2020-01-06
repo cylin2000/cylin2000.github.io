@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="这里说的私有云不是去申请服务器架设自己的云，而是利用现有的免费同步网盘来打造一个自己的云存储。 现在每个人的设备都很多，至少是公司一台电脑，家里一台电脑，还有自己的手机端，平板等，这样数据的同步就显得比较重要">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="打造个人私有云">
 <meta name="twitter:description" content="这里说的私有云不是去申请服务器架设自己的云，而是利用现有的免费同步网盘来打造一个自己的云存储。 现在每个人的设备都很多，至少是公司一台电脑，家里一台电脑，还有自己的手机端，平板等，这样数据的同步就显得比较重要">
@@ -1203,5 +1203,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

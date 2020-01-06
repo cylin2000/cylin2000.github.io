@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="本文使用的AngularJS是基于1.x版本的。 使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息 现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AngularJS 动态加载的思考">
 <meta name="twitter:description" content="本文使用的AngularJS是基于1.x版本的。 使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息 现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下">
@@ -1248,5 +1248,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

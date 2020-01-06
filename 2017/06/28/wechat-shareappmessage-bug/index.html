@@ -102,7 +102,7 @@
 <meta property="og:description" content="使用微信的JSSDK，可以在转发图文给朋友或者转发到朋友圈的时候，对转发的标题，描述以及图片进行自定义，这是个很好的功能，然而最近测试的时候发现一个Bug，当转发的链接是OAuth链接的时候，这段定义就失效了。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.caiyunlin.com/img/wechat-js-domain.png">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="微信使用JSSDK分享OAuth链接的问题">
 <meta name="twitter:description" content="使用微信的JSSDK，可以在转发图文给朋友或者转发到朋友圈的时候，对转发的标题，描述以及图片进行自定义，这是个很好的功能，然而最近测试的时候发现一个Bug，当转发的链接是OAuth链接的时候，这段定义就失效了。">
@@ -1241,5 +1241,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

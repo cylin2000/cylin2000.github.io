@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="有句话说，年少莫听李宗盛，是说有阅历的人听李宗盛的歌会特别容易共鸣，这本《代码大全》也是如此，如果你从事软件开发行业多年，并且自己也尝试过做设计，在设计、编码的过程中反复纠结过，那么不要错过此书。 这本书大而全，很适合做参考书，时常翻阅。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《代码大全》读书笔记">
 <meta name="twitter:description" content="有句话说，年少莫听李宗盛，是说有阅历的人听李宗盛的歌会特别容易共鸣，这本《代码大全》也是如此，如果你从事软件开发行业多年，并且自己也尝试过做设计，在设计、编码的过程中反复纠结过，那么不要错过此书。 这本书大而全，很适合做参考书，时常翻阅。">
@@ -1249,5 +1249,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

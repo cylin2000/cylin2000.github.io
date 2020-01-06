@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="做前端开发免不了要使用一些静态公共库，如果代码部署在互联网上面，我们可以使用CDN，如：  新浪的CDN http://lib.sinaapp.com/   百度的CDN http://cdn.code.baidu.com/     但是如果我们需要部署在内网，或者需要使用一些不太常见的类库，那么这个时候公共CDN也就不好办了">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用前端类库整理">
 <meta name="twitter:description" content="做前端开发免不了要使用一些静态公共库，如果代码部署在互联网上面，我们可以使用CDN，如：  新浪的CDN http://lib.sinaapp.com/   百度的CDN http://cdn.code.baidu.com/     但是如果我们需要部署在内网，或者需要使用一些不太常见的类库，那么这个时候公共CDN也就不好办了">
@@ -1244,5 +1244,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

@@ -104,7 +104,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://images.caiyunlin.com/20171204020949.png">
 <meta property="og:image" content="http://images.caiyunlin.com/20171204021321.png">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建本地的Jenkins持续集成系统">
 <meta name="twitter:description" content="搭建本地Jenkins持续集成系统这篇文章简要介绍如何在本地搭建一套Jenkins持续集成系统。 基本实现是这样的  在虚拟机中安装一套Ubuntu系统 在Ubuntu中，安装Jenkins 和 Docker 在Jenkins中配置Job，从GitHub获取代码，并且自动Docker实例，运行测试，编译和部署，之后销毁Docker实例">
@@ -1278,5 +1278,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

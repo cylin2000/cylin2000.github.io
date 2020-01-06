@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Javascript 对象继承">
 <meta name="twitter:description" content="Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。">
@@ -1226,5 +1226,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

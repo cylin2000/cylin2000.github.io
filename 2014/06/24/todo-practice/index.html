@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="今年初读完了Get Things Done(中译本：尽管去做，无压的工作艺术)，也想实践一把GTD，陆陆续续的试用了很多GTD相关的软件，有重量级的如Omni Focus，也有简单的todolist，简要记录各个软件的使用心得如下。因为刚买了iPad mini 所以大部分尝试的都是iOS的软件，其实很多软件也都有Android版本。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Todo 软件使用小结">
 <meta name="twitter:description" content="今年初读完了Get Things Done(中译本：尽管去做，无压的工作艺术)，也想实践一把GTD，陆陆续续的试用了很多GTD相关的软件，有重量级的如Omni Focus，也有简单的todolist，简要记录各个软件的使用心得如下。因为刚买了iPad mini 所以大部分尝试的都是iOS的软件，其实很多软件也都有Android版本。">
@@ -1196,5 +1196,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

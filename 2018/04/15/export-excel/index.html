@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="导出Excel是开发中遇到的一个常见需求，但是不同的后端服务程序可能需要引入不同的类库，比如PHP需要PHPExcel，C#需要Office组件或者其他第三方Excel解析类。 这里提供另外一个思路，可以不需要引入第三方类库来解决Excel的导出问题。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个简便的Excel导出方案">
 <meta name="twitter:description" content="导出Excel是开发中遇到的一个常见需求，但是不同的后端服务程序可能需要引入不同的类库，比如PHP需要PHPExcel，C#需要Office组件或者其他第三方Excel解析类。 这里提供另外一个思路，可以不需要引入第三方类库来解决Excel的导出问题。">
@@ -1269,5 +1269,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

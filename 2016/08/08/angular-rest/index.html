@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="因前后台分离，使用AngularJS作为纯前端，需要设计一组基于JSON的API，统一前后台的接口规范。 该组API需要有如下特性:  统一接口调用风格 统一接口返回码 以尽可能简单的方式提供调用说明 接口支持增删改查等基本功能，也有其他自定义功能，如 软删除(IsDeleted = 1)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于REST的接口定义思考">
 <meta name="twitter:description" content="因前后台分离，使用AngularJS作为纯前端，需要设计一组基于JSON的API，统一前后台的接口规范。 该组API需要有如下特性:  统一接口调用风格 统一接口返回码 以尽可能简单的方式提供调用说明 接口支持增删改查等基本功能，也有其他自定义功能，如 软删除(IsDeleted = 1)">
@@ -1305,5 +1305,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

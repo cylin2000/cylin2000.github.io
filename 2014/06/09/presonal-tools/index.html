@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://www.caiyunlin.com/dev/ForceXslt/ForceXslt.jpg">
 <meta property="og:image" content="http://www.caiyunlin.com/dev/ForceRegex/ForceRegex.jpg">
 <meta property="og:image" content="http://www.caiyunlin.com/dev/ForceEmail/ForceEmail.jpg">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="几个.NET写的小工具">
 <meta name="twitter:description" content="整理下之前写的几个小工具  ForceXslt Xslt测试工具 ForceRegex 正则表达式测试工具 ForceEmail 邮件发送工具">
@@ -1252,5 +1252,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

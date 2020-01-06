@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="工欲善其事必先利其器。 给大家分享一下我常用的感觉比较好的软件。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用软件整理">
 <meta name="twitter:description" content="工欲善其事必先利其器。 给大家分享一下我常用的感觉比较好的软件。">
@@ -1226,5 +1226,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="PowerShell有很多内置的命令，我们自己也会创建很多自定义的脚本，如何使自己创建的脚本能有系统自带的命令一样的体验呢？ 答案就在于Function，在Windows PowerShell 2.0 中引入了一种新类型的Function，叫Advanced Function，通过它你可以创建出跟Windows PowerShell的cmdlet体验完全一样命令。 本文从以下几个方面讨论如何创建自">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何创建优雅的PowerShell脚本">
 <meta name="twitter:description" content="PowerShell有很多内置的命令，我们自己也会创建很多自定义的脚本，如何使自己创建的脚本能有系统自带的命令一样的体验呢？ 答案就在于Function，在Windows PowerShell 2.0 中引入了一种新类型的Function，叫Advanced Function，通过它你可以创建出跟Windows PowerShell的cmdlet体验完全一样命令。 本文从以下几个方面讨论如何创建自">
@@ -1230,5 +1230,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

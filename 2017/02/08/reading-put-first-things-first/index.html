@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://www.caiyunlin.com/img/plan-01.png">
 <meta property="og:image" content="http://www.caiyunlin.com/img/plan-02.png">
 <meta property="og:image" content="http://www.caiyunlin.com/img/role-based-weekly-plan.png">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="找到你自己的罗盘，《要事第一》读书笔记">
 <meta name="twitter:description" content="这本书是《高效能人士的七个习惯》中第三个习惯“要事第一”的详解，是一种新式的时间管理方法。如果你对时间管理有困惑，尝试了数种时间管理方法和时间管理软件，依然不奏效，建议读一读此书。">
@@ -1292,5 +1292,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>

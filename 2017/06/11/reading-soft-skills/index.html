@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="小菜的Blog">
 <meta property="og:description" content="网上经常有程序员情商低的段子，从一个侧面也说明了程序员对代码的给予了很高的关注度，但是忽略了很多其他方面。《软技能》正是一本从另一个角度写给程序员的书，从本书的副标题“代码之外的生存指南”也可以看出，作者对程序员的容易忽视的软肋进行整理以及提出给出解决方案。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-01-03T01:50:53.107Z">
+<meta property="og:updated_time" content="2020-01-06T04:24:17.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《软技能》读书笔记">
 <meta name="twitter:description" content="网上经常有程序员情商低的段子，从一个侧面也说明了程序员对代码的给予了很高的关注度，但是忽略了很多其他方面。《软技能》正是一本从另一个角度写给程序员的书，从本书的副标题“代码之外的生存指南”也可以看出，作者对程序员的容易忽视的软肋进行整理以及提出给出解决方案。">
@@ -1274,5 +1274,14 @@
 
   
 
+
+  <script>
+  //首页设置为菜单激活
+  $(document).ready(function(){
+    if(window.location.pathname == "/blog/" || window.location.pathname == "/blog"){
+      $("#menu .menu-item").eq(0).addClass("menu-item-active")
+    }
+  })
+  </script>
 </body>
 </html>
