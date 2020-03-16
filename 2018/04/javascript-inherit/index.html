@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Javascript 对象继承 | Calvin&#39;s Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Javascript 对象继承 | Calvin&#39;s Blog">
+    <meta name="twitter:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Javascript 对象继承 | Calvin&#39;s Blog">
+    <meta property="og:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    
+    <meta name="author" content="Calvin Cai">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Calvin&#39;s Blog" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://www.caiyunlin.com/2018/04/javascript-inherit/"/>
+
+             
+    
+    
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Calvin&#39;s Blog 的主页"><img src="/img/dog5.jpg" width="80" alt="Calvin&#39;s Blog logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Calvin&#39;s Blog">Calvin&#39;s Blog</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">大道至简 悟在天成</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">嗨，我是蔡云林，一名软件开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+        
+          <p class="panel-cover__description">这里是我记录，思考和实践的小站，欢迎你的访问。</p>
+        
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/apps">工具</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/cylin2000" title="查看我的GitHub主页" target="_blank">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/cylin2000" title="上Twitter找我" target="_blank">
+      <i class="social fa fa-twitter"></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+
+<!-- Email -->
+
+  <li class="navigation__item">
+    <a href="cylin2000@163.com" title="邮件联系我" target="_blank">
+      <i class="social fa fa-envelope"></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-28T11:16:45.000Z" class="post-list__meta--date date">2018-04-28</time> &#8226; <span class="post-meta__tags tags"> 
+	<a class="article-category-link" href="/categories/技术整理/">技术整理</a>
+
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Javascript 对象继承</h1>
+  </header>
+
+  <section class="post">
+    <p>Javascript 没有直接的对象继承，可以通过原型继承的方式来实现，下面是一种实现方法。<br><a id="more"></a></p>
+<h2 id="定义父类"><a href="#定义父类" class="headerlink" title="定义父类"></a>定义父类</h2><p>将方法写到原型（prototype)上<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">  <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Person.prototype.greeting = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Hi! I\'m '</span> + <span class="keyword">this</span>.name + <span class="string">'.'</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h2 id="定义子类"><a href="#定义子类" class="headerlink" title="定义子类"></a>定义子类</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Teacher</span>(<span class="params">name, age, title</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//初始化父类的属性</span></span><br><span class="line">  Person.call(<span class="keyword">this</span>, name, age);</span><br><span class="line">  <span class="comment">//Person.apply(this,[name,age]);</span></span><br><span class="line">  <span class="comment">//初始化子类的属性</span></span><br><span class="line">  <span class="keyword">this</span>.title = title</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//继承父类的方法</span></span><br><span class="line">Teacher.prototype = <span class="built_in">Object</span>.create(Person.prototype);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将构造器指回Teacher，一般情况下可省略，详见 https://stackoverflow.com/questions/8453887/why-is-it-necessary-to-set-the-prototype-constructor</span></span><br><span class="line">Teacher.prototype.constructor = Teacher;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//设置子类的方法</span></span><br><span class="line">Teacher.prototype.sayHello = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'Hi! I\'m '</span> + <span class="keyword">this</span>.name + <span class="string">'. My title is '</span>+<span class="keyword">this</span>.title);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例化"><a href="#实例化" class="headerlink" title="实例化"></a>实例化</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> teacher1 = <span class="keyword">new</span> Teacher(<span class="string">'Allen'</span>,<span class="number">35</span>,<span class="string">'title1'</span>)</span><br><span class="line">teacher1.sayHello();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> teacher2 = <span class="keyword">new</span> Teacher(<span class="string">'Bob'</span>,<span class="number">35</span>,<span class="string">'title1'</span>)</span><br><span class="line">teacher1.greeting();</span><br></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+
+<div id="vcomments"></div>
+<script>
+  new Valine({
+      el: '#vcomments',
+      appId: 'u1VC6WDmgvRCBXGwOgDmoKVe-gzGzoHsz',
+      appKey: '4uw8mTR1jYn9VD038BGp4tM5'
+  })
+</script>
+
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">上一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/export-excel/" title="一个简便的Excel导出方案">一个简便的Excel导出方案</a></h2>
+                <p class="excerpt">
+                
+                导出Excel是开发中遇到的一个常见需求，但是不同的后端服务程序可能需要引入不同的类库，比如PHP需要PHPExcel，C#需要Office组件或者其他第三方Excel解析类。 这里提供另外一个思路，可以不需要引入第三方类库来解决Excel的导出问题。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-15T09:16:45.000Z" class="post-list__meta--date date">2018-04-15</time> <a class="btn-border-small" href="/2018/04/export-excel/">继续阅读</a></div>
+                       
+            </div>
+        
+
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 Calvin Cai - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+         <a href>沪ICP备17011644号-1</a> 由 <a href="http://hexo.io">Hexo</a> 强力驱动 v3.8.0
+    </span>
+    <span class="footer__copyright">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?203c5ae1415eab702ef17ad33e3ee952";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+    
+</body>
+</html>

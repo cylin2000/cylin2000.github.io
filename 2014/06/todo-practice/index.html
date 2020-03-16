@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Todo 软件使用小结 | Calvin&#39;s Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Todo 软件使用小结 | Calvin&#39;s Blog">
+    <meta name="twitter:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Todo 软件使用小结 | Calvin&#39;s Blog">
+    <meta property="og:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    
+    <meta name="author" content="Calvin Cai">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Calvin&#39;s Blog" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://www.caiyunlin.com/2014/06/todo-practice/"/>
+
+             
+    
+    
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Calvin&#39;s Blog 的主页"><img src="/img/dog5.jpg" width="80" alt="Calvin&#39;s Blog logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Calvin&#39;s Blog">Calvin&#39;s Blog</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">大道至简 悟在天成</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">嗨，我是蔡云林，一名软件开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+        
+          <p class="panel-cover__description">这里是我记录，思考和实践的小站，欢迎你的访问。</p>
+        
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/apps">工具</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/cylin2000" title="查看我的GitHub主页" target="_blank">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/cylin2000" title="上Twitter找我" target="_blank">
+      <i class="social fa fa-twitter"></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+
+<!-- Email -->
+
+  <li class="navigation__item">
+    <a href="cylin2000@163.com" title="邮件联系我" target="_blank">
+      <i class="social fa fa-envelope"></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2014-06-24T14:04:01.000Z" class="post-list__meta--date date">2014-06-24</time> &#8226; <span class="post-meta__tags tags"> 
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Todo 软件使用小结</h1>
+  </header>
+
+  <section class="post">
+    <p>今年初读完了Get Things Done(中译本：尽管去做，无压的工作艺术)，也想实践一把GTD，陆陆续续的试用了很多GTD相关的软件，有重量级的如Omni Focus，也有简单的todolist，简要记录各个软件的使用心得如下。<br>因为刚买了iPad mini 所以大部分尝试的都是iOS的软件，其实很多软件也都有Android版本。<br><a id="more"></a></p>
+<ul>
+<li>GoTasks<br>iOS和Android下都有版本，界面简洁，免费，可以和Google Tasks同步，支持无限级子任务。<br>缺点是同步速度慢，有时候认证会丢失，需要重复输入密码，Google提供的Web端管理功能很弱</li>
+<li>Wunderlist<br>全平台支持，几乎所有的平台都有版本，免费版本可以随时同步，界面简洁，任务无上限，支持循环提醒，子任务等<br>这个我使用时间还较长，中间放弃过一段时间去试用其他软件，缺点比如，已完成的任务不能再编辑，名称，详情，排序都不可以</li>
+<li>Remember The Milk<br>试用时间不长，多平台，感觉免费版限制较多</li>
+<li>MyLifeOrganized<br>多平台，提供目标管理视图和任务视图，让你可以做规划，也可以只关注当前要做的任务</li>
+<li>Doit.im<br>多平台，应该是蛮符合GTD理念的，界面简洁，免费版只能24小时同步一次（很多人因为这个原因放弃了它），收费版100元每年</li>
+<li>TodoList<br>强大的软件，开源，只有Windows版本，Android有个人用户开发的插件，任务的自定义属性很强大，基本没有你想不到的<br>缺点是只有Windows平台，现在移动应用满天飞，没移动平台真不方便，另外界面也是很标准的GridView方式，没啥美感</li>
+<li>TickTick<br>国产软件，iOS Android 网页端都有版本，免费版可以同步，有任务条数限制，项目个数限制，不过基本够用，貌似主打海外市场</li>
+<li>Omni Focus<br>重量级GTD软件，看到很多文章介绍，GTD神器，价格相对较贵，只是在越狱的ipad上试了试，按照教程实施了几把，应该是视图功能用好了才能发挥它的强大，不过感觉对我来说，不需要这么强大的功能，所以就没有继续下去<br>经过一段试用之后，发现自己已经陷入了工具选择困难中，每个工具中都有一些半拉子任务。这样就不是在实施GTD了，所以经过慎重考虑了下，只选用一种</li>
+</ul>
+<p>最后决定使用Wunderlist来管理自己的待办事项，原因如下:<br>免费，因为暂时对收费软件的使用还没有形成习惯，况且这个免费的做的真心不错<br>多平台支持，目前有Android手机，iPad mini平板，家用PC，公司PC，MacBook Pro各一部，能在这所有平台都同步自然是很好的<br>简单的使用方式 收件箱+自定义文件夹(目前我定义的为 目标/工作/私人/购物 等几个分类)<br>界面简洁，多种重复方式<br>没有最好的工具，只有适合自己的工具，选一款适合你的工具，开始GTD吧。</p>
+
+  </section>
+
+</article>
+
+
+<div id="vcomments"></div>
+<script>
+  new Valine({
+      el: '#vcomments',
+      appId: 'u1VC6WDmgvRCBXGwOgDmoKVe-gzGzoHsz',
+      appKey: '4uw8mTR1jYn9VD038BGp4tM5'
+  })
+</script>
+
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">上一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2014/06/personal-version-control/" title="使用同步盘创建自己的代码库">使用同步盘创建自己的代码库</a></h2>
+                <p class="excerpt">
+                
+                作为程序猿，当然会有一些自己写的代码，我一般都保存到网盘里，然后同步到各个机器中。但是渐渐发现，本地的代码没有版本，如果想回顾之前的代码，或者比较修改的地方，就非常不方便了。
+这里提供一个思路，如果你不想将代码提交到网络上，但是又想保留下版本，以便回顾和比较历史代码，可以一试。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2014-06-17T11:16:45.000Z" class="post-list__meta--date date">2014-06-17</time> <a class="btn-border-small" href="/2014/06/personal-version-control/">继续阅读</a></div>
+                       
+            </div>
+        
+
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">下一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2014/06/vi-command/" title="最常用的vi命令">最常用的vi命令</a></h2>
+                <p class="excerpt">
+                
+                最近在mac上偶尔要编辑文本文件，就用到了vi，遵从80/20原则，先记录下最简单常用的命令，够用即可
+vi filename 打开文本文件，跟notepad一样打开文件之后，初始不是编辑状态的，你可以按 i 键进行插入操作修改完毕 按 ESC 退出编辑状态输入 :wq 保存退出，或者 :q! 不保
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2014-06-29T11:16:45.000Z" class="post-list__meta--date date">2014-06-29</time> <a class="btn-border-small" href="/2014/06/vi-command/">继续阅读</a></div>
+                           
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 Calvin Cai - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+         <a href>沪ICP备17011644号-1</a> 由 <a href="http://hexo.io">Hexo</a> 强力驱动 v3.8.0
+    </span>
+    <span class="footer__copyright">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?203c5ae1415eab702ef17ad33e3ee952";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+    
+</body>
+</html>

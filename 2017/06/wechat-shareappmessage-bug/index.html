@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>微信使用JSSDK分享OAuth链接的问题 | Calvin&#39;s Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="微信使用JSSDK分享OAuth链接的问题 | Calvin&#39;s Blog">
+    <meta name="twitter:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="微信使用JSSDK分享OAuth链接的问题 | Calvin&#39;s Blog">
+    <meta property="og:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    
+    <meta name="author" content="Calvin Cai">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Calvin&#39;s Blog" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://www.caiyunlin.com/2017/06/wechat-shareappmessage-bug/"/>
+
+             
+    
+    
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Calvin&#39;s Blog 的主页"><img src="/img/dog5.jpg" width="80" alt="Calvin&#39;s Blog logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Calvin&#39;s Blog">Calvin&#39;s Blog</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">大道至简 悟在天成</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">嗨，我是蔡云林，一名软件开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+        
+          <p class="panel-cover__description">这里是我记录，思考和实践的小站，欢迎你的访问。</p>
+        
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/apps">工具</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/cylin2000" title="查看我的GitHub主页" target="_blank">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/cylin2000" title="上Twitter找我" target="_blank">
+      <i class="social fa fa-twitter"></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+
+<!-- Email -->
+
+  <li class="navigation__item">
+    <a href="cylin2000@163.com" title="邮件联系我" target="_blank">
+      <i class="social fa fa-envelope"></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-06-28T07:33:00.000Z" class="post-list__meta--date date">2017-06-28</time> &#8226; <span class="post-meta__tags tags"> 
+	<a class="article-category-link" href="/categories/疑难杂症/">疑难杂症</a>
+
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">微信使用JSSDK分享OAuth链接的问题</h1>
+  </header>
+
+  <section class="post">
+    <p>使用微信的JSSDK，可以在转发图文给朋友或者转发到朋友圈的时候，对转发的标题，描述以及图片进行自定义，这是个很好的功能，然而最近测试的时候发现一个Bug，当转发的链接是OAuth链接的时候，这段定义就失效了。</p>
+<a id="more"></a>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>先简单说一下什么是OAuth链接，参考微信的说明文档 <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842" target="_blank" rel="noopener">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421140842</a></p>
+<p>微信OAuth的链接格式是这样的 <a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect" target="_blank" rel="noopener">https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect</a> 其中的 REDIRECT_URI 就是我们自己的网页链接，这段链接只能在微信里面访问，微信会得到通过用户授权得到用户的信息，然后跳转到 REDIRECT_URL 将用户信息传过来</p>
+<p>关于JSSDK的分享自定义，微信的说明文档在此处 <a href="https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115" target="_blank" rel="noopener">https://mp.weixin.qq.com/wiki?t=resource/res_main&amp;id=mp1421141115</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">获取“分享给朋友”按钮点击状态及自定义分享内容接口</span><br><span class="line">wx.onMenuShareAppMessage(&#123;</span><br><span class="line">    title: <span class="string">''</span>, <span class="comment">// 分享标题</span></span><br><span class="line">    desc: <span class="string">''</span>, <span class="comment">// 分享描述</span></span><br><span class="line">    link: <span class="string">''</span>, <span class="comment">// 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致</span></span><br><span class="line">    imgUrl: <span class="string">''</span>, <span class="comment">// 分享图标</span></span><br><span class="line">    type: <span class="string">''</span>, <span class="comment">// 分享类型,music、video或link，不填默认为link</span></span><br><span class="line">    dataUrl: <span class="string">''</span>, <span class="comment">// 如果type是music或video，则要提供数据链接，默认为空</span></span><br><span class="line">    success: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">// 用户确认分享后执行的回调函数</span></span><br><span class="line">    &#125;,</span><br><span class="line">    cancel: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; </span><br><span class="line">        <span class="comment">// 用户取消分享后执行的回调函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>上面的代码中，注意link的描述，”该链接域名或路径必须与当前页面对应的公众号JS安全域名一致”，就是说你转发的链接必须与你公众号的JS安全域名一致，因为安全问题，这个设置无可厚非。 你不能自己的图文在 <a href="http://www.mydomain.com" target="_blank" rel="noopener">http://www.mydomain.com</a> 而分享其他链接如 <a href="http://www.baidu.com，" target="_blank" rel="noopener">http://www.baidu.com，</a> 当你这么设置的时候，这段分享自定义的脚本就全部失效。</p>
+<p>现在问题来了，如果我想使用微信自己的OAuth链接进行分享的话，也会失效，虽然是他自家的域名，微信同样认为这个链接和JS安全域名不一致，而如果直接分享 <a href="http://www.mydomain.com/xxx" target="_blank" rel="noopener">http://www.mydomain.com/xxx</a> 的链接时，是无法从微信里得知用户信息的。</p>
+<p>JS安全域名是可以在公众号管理后台设置的，但是无法把open.weixin.qq.com或者qq.com设置为JS安全域名的。</p>
+<img src="/img/wechat-js-domain.png"> 
+<p>看起来似乎是无解了</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>经过思考，归纳一下问题就是在于两点</p>
+<ol>
+<li>JSSDK只能转发同域名下的链接 <a href="http://www.mydomain.com" target="_blank" rel="noopener">http://www.mydomain.com</a></li>
+<li>必须使用 <a href="https://open.weixin.qq.com" target="_blank" rel="noopener">https://open.weixin.qq.com</a> 开头的OAuth链接才能识别微信用户的身份</li>
+</ol>
+<p>解决方法其实很简单，把OAuth的链接编码，并且传给自己的代码，使用后台跳转如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$oauth_url = &quot;https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect&quot;;</span><br><span class="line">$encoded_url = base64_encode($oauth_url);</span><br><span class="line">$new_url = &quot;http://www.mydomain.com/jump?url=&quot;+encoded_url;</span><br><span class="line">此处 $new_url 代替之前的转发url，他的域名是符合JSSDK安全域名定义的</span><br></pre></td></tr></table></figure></p>
+<p>Jump里的处理规则就是解码以及后台跳转，伪代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$encoded_url = request[&apos;url&apos;];</span><br><span class="line">$url = base64_decode($encoded_url);</span><br><span class="line">header(&quot;location: &quot;.$url);</span><br></pre></td></tr></table></figure></p>
+<p>这个问题困扰了我好久，还好终于解决了</p>
+<h2 id="2019-02-27-补充"><a href="#2019-02-27-补充" class="headerlink" title="2019-02-27 补充"></a>2019-02-27 补充</h2><p>这个问题不是微信的bug，其实转发的时候可以直接转发自己域名下的地址，比如 <a href="http://www.mydomain.com/share/news/123" target="_blank" rel="noopener">http://www.mydomain.com/share/news/123</a> 然后，在这个具体的页面里面，如果需要OAuth，进行二次跳转，而不是必须一开始就拼接OAuth的地址，这个问题是开始钻了牛角尖了。。。</p>
+
+  </section>
+
+</article>
+
+
+<div id="vcomments"></div>
+<script>
+  new Valine({
+      el: '#vcomments',
+      appId: 'u1VC6WDmgvRCBXGwOgDmoKVe-gzGzoHsz',
+      appKey: '4uw8mTR1jYn9VD038BGp4tM5'
+  })
+</script>
+
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">上一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/06/reading-soft-skills/" title="《软技能》读书笔记">《软技能》读书笔记</a></h2>
+                <p class="excerpt">
+                
+                网上经常有程序员情商低的段子，从一个侧面也说明了程序员对代码的给予了很高的关注度，但是忽略了很多其他方面。《软技能》正是一本从另一个角度写给程序员的书，从本书的副标题“代码之外的生存指南”也可以看出，作者对程序员的容易忽视的软肋进行整理以及提出给出解决方案。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-06-11T19:53:20.000Z" class="post-list__meta--date date">2017-06-11</time> <a class="btn-border-small" href="/2017/06/reading-soft-skills/">继续阅读</a></div>
+                       
+            </div>
+        
+
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">下一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/install-jenkins/" title="搭建本地的Jenkins持续集成系统">搭建本地的Jenkins持续集成系统</a></h2>
+                <p class="excerpt">
+                
+                
+本文简要介绍如何在本地搭建一套Jenkins持续集成系统，可以快速的在本地测试pipeline
+
+基本实现是这样的
+
+在虚拟机中安装一套Ubuntu系统
+在Ubuntu中，安装Jenkins 和 Docker
+在Jenkins中配置Job，从GitHub获取代码，并且自动Docker实例，运行测试，编译和部署，之后销毁Docker实例
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-03T13:50:20.000Z" class="post-list__meta--date date">2017-12-03</time> <a class="btn-border-small" href="/2017/12/install-jenkins/">继续阅读</a></div>
+                           
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 Calvin Cai - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+         <a href>沪ICP备17011644号-1</a> 由 <a href="http://hexo.io">Hexo</a> 强力驱动 v3.8.0
+    </span>
+    <span class="footer__copyright">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?203c5ae1415eab702ef17ad33e3ee952";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+    
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>基于REST的接口定义思考 | Calvin&#39;s Blog</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="基于REST的接口定义思考 | Calvin&#39;s Blog">
+    <meta name="twitter:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="基于REST的接口定义思考 | Calvin&#39;s Blog">
+    <meta property="og:description" content="嗨，我是蔡云林，一名软件开发者。">
+
+    
+    <meta name="author" content="Calvin Cai">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/img/favicon.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Calvin&#39;s Blog" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://www.caiyunlin.com/2016/08/angular-rest/"/>
+
+             
+    
+    
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Calvin&#39;s Blog 的主页"><img src="/img/dog5.jpg" width="80" alt="Calvin&#39;s Blog logo" class="panel-cover__logo logo"></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Calvin&#39;s Blog">Calvin&#39;s Blog</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">大道至简 悟在天成</span>
+        
+        <hr class="panel-cover__divider">
+        <p class="panel-cover__description">嗨，我是蔡云林，一名软件开发者。</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary">
+        
+          <p class="panel-cover__description">这里是我记录，思考和实践的小站，欢迎你的访问。</p>
+        
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/apps">工具</a></li>
+            
+              <li class="navigation__item"><a href="/about">关于</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/cylin2000" title="查看我的GitHub主页" target="_blank">
+      <i class="social fa fa-github"></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  <li class="navigation__item">
+    <a href="https://twitter.com/cylin2000" title="上Twitter找我" target="_blank">
+      <i class="social fa fa-twitter"></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+
+
+<!-- Email -->
+
+  <li class="navigation__item">
+    <a href="cylin2000@163.com" title="邮件联系我" target="_blank">
+      <i class="social fa fa-envelope"></i>
+      <span class="label">Email</span>
+    </a>
+  </li>
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class="social fa fa-rss"></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-blue"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-08-08T09:01:10.000Z" class="post-list__meta--date date">2016-08-08</time> &#8226; <span class="post-meta__tags tags"> 
+	<a class="article-category-link" href="/categories/技术整理/">技术整理</a>
+
+ </span>
+      <span class="page-pv">
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">基于REST的接口定义思考</h1>
+  </header>
+
+  <section class="post">
+    <p>因前后台分离，使用AngularJS作为纯前端，需要设计一组基于JSON的API，统一前后台的接口规范。</p>
+<p>该组API需要有如下特性:</p>
+<ul>
+<li>统一接口调用风格</li>
+<li>统一接口返回码</li>
+<li>以尽可能简单的方式提供调用说明</li>
+<li>接口支持增删改查等基本功能，也有其他自定义功能，如 软删除(IsDeleted = 1)<a id="more"></a>
+</li>
+</ul>
+<h2 id="调查"><a href="#调查" class="headerlink" title="调查"></a>调查</h2><p>首先想到的是REST，设计一套RESTful的方案，如 <a href="http://www.dummy.com/api/menu" target="_blank" rel="noopener">http://www.dummy.com/api/menu</a> 提供最MENU的管理<br>使用HTTP动词作为操作管理</p>
+<p>GET : 获取菜单<br>POST : 创建菜单<br>PUT : 创建或更新菜单<br>DELETE : 删除菜单</p>
+<p>现实使用的时候发现如下问题：</p>
+<ul>
+<li><p>GET 接口可以返回一个数据{menu} 或者一组数据[{menu},{menu},{menu}], 后台要单独处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">如 GET /menu 返回 一组[&#123;menu&#125;,&#123;menu&#125;,&#123;menu&#125;]</span><br><span class="line">GET /menu/1 通过路由映射到后台 Menu(int id) 方法，返回一个menu</span><br><span class="line">但是 如果我的查询条件中就有包含 &#123;id:1&#125; 这样的条件，那么会出现</span><br><span class="line">GET /menu , post data &#123;id:1&#125;, 这样会自动路由到 Menu(int id) 方法，期望的是返回menu数组，其中包含一个menu [&#123;menu&#125;]，后台只返回了一个&#123;menu&#125;</span><br></pre></td></tr></table></figure>
+<p>按照wikipedia的举例，menu和menus是分开的</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET http://www.store.com/products</span><br><span class="line">GET http://www.store.com/product/12345</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>REST推荐通过状态码返回出错信息</p>
+<p>对于HTTP的状态吗，常规的我只记得</p>
+<ul>
+<li>200 返回正常</li>
+<li>401 认证错误</li>
+<li>404 找不到页面</li>
+<li>500 服务器错误</li>
+</ul>
+</li>
+</ul>
+<p>其他的只能现用现查，这样当后台返回409，我查完得知表示资源冲突，但是具体冲突是因为什么，还是需要和后台沟通好。</p>
+<p>另一个问题是，直观的感觉，返回200就代表正常，如果4xx，5xx就感觉是服务器错误，和我的应用程序无关才是，3xx基本没碰到过。</p>
+<p>但是这里409是我们自己后台抛出的，和服务器无关。我不希望将系统错误，传输错误和应用程序错误混为一谈。</p>
+<ul>
+<li>只有四个动词，不够描述后台所有的操作，按照REST的推荐，应该都封装到PUT里</li>
+</ul>
+<p>而微信公众号的接口设计却没有完全使用这种方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN</span><br><span class="line">https://api.weixin.qq.com/cgi-bin/menu/get?access_token=ACCESS_TOKEN</span><br><span class="line">https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN</span><br></pre></td></tr></table></figure></p>
+<p>百度地图的API也是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://lbsyun.baidu.com/index.php?title=webapi/guide/webservice-placeapi</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>虽然HTTP的动作只有4个，但是后台为了操作明了，同样还是需要创建多个function来表示不同的操作内容，前台AngularJS同样需要创建多个function来表示动作</li>
+<li>某些浏览器不支持PUT,DELETE等从此（这个问题现在好像不成问题了）</li>
+</ul>
+<h2 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h2><p>按照微信API的方式，统一使用access_token，就是说每次请求都需要带入access_token，防止跨站攻击</p>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>我一直想强行用REST的方法整理接口，因为这个标准存在了，与别人沟通的时候，公认约定总归好于个人约定</p>
+<p>但是使用过程中诸多不顺，因此查找文章以及知名开放API的提供者，比如微信公众号API</p>
+<p>终于找到了支撑自己的几个理由：</p>
+<ol>
+<li>REST是设计风格而不是标准，这也是很多地方说RESTful的原因，既然是风格那也就是可以有选择的使用</li>
+<li>微信的API设计，并不是完全的REST，他的动词都是放在资源的后面，这点结合后台api的function非常方便，微信API的使用频率和使用量应该可以打消我们其他的顾虑，比如效率，安全</li>
+<li><p>SOAP也是一种WEB访问协议，他封装了操作，用XMLSpy访问SOAP的wsdl，可以得到可以操作的方法，只是使用方法复杂，我们为何不可把操作结合到REST风格的url里，这样既可知道调用方法，又不需通过复杂的方式取得</p>
+</li>
+<li><p>古老的箴言</p>
+</li>
+</ol>
+<blockquote>
+<p>如果你手里有一把锤子，所有东西看上去都像钉子。</p>
+</blockquote>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>找到了理由，自然要设计适合自己的API，而不是用REST就全部REST</p>
+<p>结论很简单，即使用REST那样清晰明了的URL风格，结合SOAP的动作的描述方式，对动作在URL进行描述。<br>所有的返回都是200，应用程序错误用errcode表示</p>
+<p>接口只使用GET 和POST 两种动词 , 这样不存在浏览器兼容问题<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.dummy.com/api/menu/get    表示获取菜单(单个记录)</span></span><br><span class="line">http:<span class="comment">//www.dummy.com/api/menu/query  表示查询菜单(多条记录)，post数据中加入查询条件</span></span><br><span class="line">http:<span class="comment">//www.dummy.com/api/menu/create 表示创建菜单</span></span><br><span class="line">http:<span class="comment">//www.dummy.com/api/menu/update 表示更新菜单</span></span><br><span class="line">http:<span class="comment">//www.dummy.com/api/menu/delete 表示删除菜单</span></span><br><span class="line"></span><br><span class="line">结合 AngularJS的 Resource</span><br><span class="line"></span><br><span class="line">app.controller(<span class="string">'TableCtrl'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">$scope, $routeParams, $resource</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> User = $resource(<span class="string">'/api/user/:_action'</span>,</span><br><span class="line">      &#123;<span class="attr">id</span>:<span class="string">"@id"</span>&#125;, </span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">get</span>:   &#123;method:<span class="string">"GET"</span>,  <span class="attr">params</span>:&#123;<span class="attr">_action</span>:<span class="string">"get"</span>&#125;&#125;,</span><br><span class="line">        query: &#123;<span class="attr">method</span>:<span class="string">"POST"</span>, <span class="attr">params</span>:&#123;<span class="attr">_action</span>:<span class="string">"query"</span>&#125;, <span class="attr">isArray</span>:<span class="literal">true</span>&#125;,</span><br><span class="line">        create:&#123;<span class="attr">method</span>:<span class="string">"POST"</span>, <span class="attr">params</span>:&#123;<span class="attr">_action</span>:<span class="string">"create"</span>&#125;&#125;,</span><br><span class="line">        update:&#123;<span class="attr">method</span>:<span class="string">"POST"</span>, <span class="attr">params</span>:&#123;<span class="attr">_action</span>:<span class="string">"update"</span>&#125;&#125;,</span><br><span class="line">        <span class="keyword">delete</span>:&#123;<span class="attr">method</span>:<span class="string">"GET"</span>,  <span class="attr">params</span>:&#123;<span class="attr">_action</span>:<span class="string">"delete"</span>&#125;&#125;,</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">    $scope.users = User.query(&#123;<span class="attr">ticket</span>:<span class="string">"1155"</span>&#125;);</span><br><span class="line">    $scope.id = $routeParams.id;</span><br><span class="line">    <span class="keyword">if</span>($scope.id)&#123;</span><br><span class="line">      $scope.user = User.get(&#123;<span class="attr">id</span>:$scope.id&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>不需要参数的，或者参数在URL中提供的使用GET方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http://www.dummy.com/api/menu/get </span><br><span class="line">http://www.dummy.com/api/menu/get?id=5</span><br><span class="line">http://www.dummy.com/api/menu/delete?id=6</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>需要提交数据的使用POST方法</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//www.dummy.com/api/menu/create</span></span><br><span class="line">POST数据如下</span><br><span class="line">&#123;</span><br><span class="line">    name:<span class="string">"测试菜单"</span></span><br><span class="line">&#125;</span><br><span class="line">http:<span class="comment">//www.dummy.com/api/menu/update</span></span><br><span class="line">&#123;</span><br><span class="line">    id:<span class="string">"5"</span>,</span><br><span class="line">    name:<span class="string">"新菜单"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>返回格式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">操作正确</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"errcode"</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="string">"errmsg"</span>:<span class="string">"ok"</span></span><br><span class="line">&#125;</span><br><span class="line">操作错误</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"errcode"</span>: <span class="number">401</span>,</span><br><span class="line">    <span class="string">"errmsg"</span>:<span class="string">"No Access"</span></span><br><span class="line">&#125;</span><br><span class="line">操作正确有数据</span><br><span class="line">&#123;</span><br><span class="line">    <span class="string">"errcode"</span>:<span class="number">0</span>,</span><br><span class="line">    <span class="string">"errmsg"</span>:<span class="string">"ok"</span>,</span><br><span class="line">    <span class="string">"menu"</span>:&#123;</span><br><span class="line">        <span class="string">"name"</span>:<span class="string">"测试菜单"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="http://www.dummy.com/api/menu/help" target="_blank" rel="noopener">http://www.dummy.com/api/menu/help</a> 获取menu下的接口说明文档，以json返回，这样接口就可以像SOAP那样，自说明<br>这个只是一个设想，需完善</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">"get"</span>:&#123;</span><br><span class="line">        <span class="string">"http"</span>:<span class="string">"get"</span>,</span><br><span class="line">        <span class="string">"request"</span>:&#123;&#125;,</span><br><span class="line">        <span class="string">"response"</span>:&#123;</span><br><span class="line">            <span class="string">"errcode"</span>:<span class="number">0</span>,</span><br><span class="line">            <span class="string">"errmsg"</span>:<span class="string">"ok"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"create"</span>:&#123;</span><br><span class="line">        <span class="string">"request"</span>:&#123;</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">"response"</span>:&#123;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h2><p><a href="https://zh.wikipedia.org/zh-cn/REST" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-cn/REST</a><br><a href="https://zh.wikipedia.org/zh-cn/SOAP" target="_blank" rel="noopener">https://zh.wikipedia.org/zh-cn/SOAP</a><br><a href="http://www.infoq.com/cn/articles/rest-introduction" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/rest-introduction</a><br><a href="http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html" target="_blank" rel="noopener">http://mp.weixin.qq.com/wiki/10/0234e39a2025342c17a7d23595c6b40a.html</a><br><a href="http://mindhacks.cn/2009/01/16/hammers-and-nails/" target="_blank" rel="noopener">http://mindhacks.cn/2009/01/16/hammers-and-nails/</a><br><a href="http://blog.csdn.net/pongba/article/details/3796771" target="_blank" rel="noopener">http://blog.csdn.net/pongba/article/details/3796771</a></p>
+
+  </section>
+
+</article>
+
+
+<div id="vcomments"></div>
+<script>
+  new Valine({
+      el: '#vcomments',
+      appId: 'u1VC6WDmgvRCBXGwOgDmoKVe-gzGzoHsz',
+      appKey: '4uw8mTR1jYn9VD038BGp4tM5'
+  })
+</script>
+
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">上一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/07/angular-dynamic-loading/" title="AngularJS 动态加载的思考">AngularJS 动态加载的思考</a></h2>
+                <p class="excerpt">
+                
+                本文使用的AngularJS是基于1.x版本的。
+使用AngularJS做前端，路由都是静态配置的，久而久之发现每次新增加一个模块都要配置一下路由，实在有些麻烦，遂研究了一下能否动态配置路由信息
+现状项目中使用的是ui-router，因为要支持多级路由，所以没有使用默认的路由，代码如下
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-07-21T11:37:45.000Z" class="post-list__meta--date date">2016-07-21</time> <a class="btn-border-small" href="/2016/07/angular-dynamic-loading/">继续阅读</a></div>
+                       
+            </div>
+        
+
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">下一篇</span>
+                <h2 class="post-list__post-title post-title"><a href="/2016/12/how-to-create-ps-script/" title="如何创建优雅的PowerShell脚本">如何创建优雅的PowerShell脚本</a></h2>
+                <p class="excerpt">
+                
+                PowerShell有很多内置的命令，我们自己也会创建很多自定义的脚本，如何使自己创建的脚本能有系统自带的命令一样的体验呢？
+答案就在于Function，在Windows PowerShell 2.0 中引入了一种新类型的Function，叫Advanced Function，通过它你可以创建出跟Windows PowerShell的cmdlet体验完全一样命令。
+本文从以下几个方面讨论如何创建自己的 Advanced Function。
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2016-12-02T06:46:00.000Z" class="post-list__meta--date date">2016-12-02</time> <a class="btn-border-small" href="/2016/12/how-to-create-ps-script/">继续阅读</a></div>
+                           
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2020 Calvin Cai - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+         <a href>沪ICP备17011644号-1</a> 由 <a href="http://hexo.io">Hexo</a> 强力驱动 v3.8.0
+    </span>
+    <span class="footer__copyright">
+        <span id="busuanzi_container_site_pv">
+            本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+    </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?203c5ae1415eab702ef17ad33e3ee952";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    
+    
+</body>
+</html>
