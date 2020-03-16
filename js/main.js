@@ -10,7 +10,7 @@ $(document).ready(function() {
       $('.panel-cover').addClass('panel-cover--collapsed');
     } else {
       $('.panel-cover').css('max-width',currentWidth);
-      $('.panel-cover').animate({'max-width': '700px', 'width': '26%'}, 400, swing = 'swing', function() {} );
+      $('.panel-cover').animate({'max-width': '700px', 'width': '24%'}, 400, swing = 'swing', function() {} );
     }
   });
 
