@@ -6342,7 +6342,7 @@ i.fa.fa-spinner.fa-spin {
   margin-left: 30px;
 }
 .cover-blue {
-  background-color: rgba(37,104,163,0.1);
+  background-color: rgba(37,104,163,0.6);
   background-image: -webkit-linear-gradient(-410deg, rgba(37,104,163,0.6) 20%, rgba(18,51,80,0.8));
   background-image: linear-gradient(140deg, rgba(37,104,163,0.6) 20%, rgba(18,51,80,0.8));
 }
@@ -6385,6 +6385,7 @@ i.fa.fa-spinner.fa-spin {
   text-shadow: none;
   color: #4e97d8;
   -webkit-font-smoothing: antialiased;
+  line-height: 1.1;
 }
 .btn:hover,
 .navigation__item a:hover {
