@@ -19,12 +19,10 @@ $(document).ready(function() {
     $('.main-post-list').removeClass('hidden');
   }
 
-  if (window.location.pathname.substring(0, 5) == "/tag/") {
+  //如果不是首页，则折叠左侧边栏
+  if(window.location.pathname != "/"){
     $('.panel-cover').addClass('panel-cover--collapsed');
-  }
-  
-  if (window.location.pathname.substring(0, 6) == "/page/") {
-    $('.panel-cover').addClass('panel-cover--collapsed');
+    $('.main-post-list').removeClass('hidden');
   }
 
   $('.btn-mobile-menu__icon').click(function() {
