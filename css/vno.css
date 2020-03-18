@@ -6810,3 +6810,14 @@ input[type="tel"]:-ms-input-placeholder {
     margin-bottom: 0.4em;
   }
 }
+.post h2 {
+  margin: 1em 0 0.5em 0;
+  font-weight: 600;
+  font-family: 'Titillium Web', sans-serif;
+  position: relative;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+  font-size: 24px;
+  line-height: 40px;
+  color: #355681;
+  border-bottom: 1px solid rgba(53,86,129,0.3);
+}
